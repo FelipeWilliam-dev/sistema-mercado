@@ -1,0 +1,25 @@
+<h2>{{title}}</h2>
+<a href="/usuarios/novo" class="button">Adicionar Novo Usuário</a>
+
+<table border="1" style="width:100%; margin-top: 20px;">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Login</th>
+            <th>Tipo</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each usuarios}}
+        <tr>
+            <td>{{this.id_usuario}}</td>
+            <td>{{this.nome_usuario}}</td>
+            <td>{{this.login}}</td>
+            <td>{{this.tipo_acesso}}</td>
+            <td>{{#if (eq this.ativo 1)}}Ativo{{else}}Inativo{{/if}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

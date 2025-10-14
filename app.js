@@ -1,5 +1,6 @@
-const sequelize = require('./config/database');
 const express = require('express');
+const sequelize = require('./config/database');
+require('dotenv').config();
 const { engine } = require('express-handlebars');
 const path = require('path');
 
@@ -38,13 +39,14 @@ const fornecedorRoutes = require('./routes/fornecedorRoutes');
 const clienteRoutes = require('./routes/clienteRoutes');
 const produtoRoutes = require('./routes/produtoRoutes');
 const vendaRoutes = require('./routes/vendaRoutes');
+const usuarioRoutes = require('./routes/usuarioRoutes');
 
 
 app.use('/fornecedores', fornecedorRoutes);
 app.use('/clientes', clienteRoutes);
 app.use('/produtos', produtoRoutes);
 app.use('/vendas', vendaRoutes);
-
+app.use('/usuarios', usuarioRoutes);
 
 
 

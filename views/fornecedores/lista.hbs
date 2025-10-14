@@ -1,0 +1,36 @@
+<h2>{{title}}</h2>
+<a href="/fornecedores/novo" class="button">Adicionar Novo Fornecedor</a>
+
+<table border="1" style="width:100%; margin-top: 20px;">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>CNPJ</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each fornecedores}}
+        <tr>
+            <td>{{this.id_fornecedor}}</td>
+            <td>{{this.nome_fornecedor}}</td>
+            <td>{{this.cnpj}}</td>
+            <td>{{this.email_fornecedor}}</td>
+            <td>{{this.telefone_fornecedor}}</td>
+            <td>
+                <a href="/fornecedores/editar/{{this.id_fornecedor}}">Editar</a>
+                <form action="/fornecedores/excluir/{{this.id_fornecedor}}" method="POST" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</button>
+                </form>
+            </td>
+        </tr>
+        {{else}}
+        <tr>
+            <td colspan="6">Nenhum fornecedor cadastrado.</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

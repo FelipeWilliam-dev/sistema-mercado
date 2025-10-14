@@ -37,11 +37,14 @@ app.get('/', (req, res) => {
 const fornecedorRoutes = require('./routes/fornecedorRoutes');
 const clienteRoutes = require('./routes/clienteRoutes');
 const produtoRoutes = require('./routes/produtoRoutes');
+const vendaRoutes = require('./routes/vendaRoutes');
 
 
 app.use('/fornecedores', fornecedorRoutes);
 app.use('/clientes', clienteRoutes);
 app.use('/produtos', produtoRoutes);
+app.use('/vendas', vendaRoutes);
+
 
 
 

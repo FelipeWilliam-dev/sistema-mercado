@@ -1,0 +1,35 @@
+<h2>{{title}}</h2>
+
+<form action="/vendas/nova" method="POST">
+    <div>
+        <label for="id_cliente">Cliente:</label>
+        <select id="id_cliente" name="id_cliente" required>
+            <option value="">-- Selecione o Cliente --</option>
+            {{#each clientes}}
+                <option value="{{this.id_cliente}}">{{this.nome_cliente}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <hr>
+    <h3>Produtos</h3>
+    <p>Marque os produtos e defina a quantidade desejada.</p>
+    
+    <div id="lista-produtos">
+        {{#each produtos}}
+            <div>
+                <input type="checkbox" name="produtos" value="{{this.id_prod}}" id="prod_{{this.id_prod}}">
+                <label for="prod_{{this.id_prod}}">{{this.nome_prod}} (Estoque: {{this.qtd_estoque}})</label>
+                <label for="qtd_{{this.id_prod}}">Qtd:</label>
+                <input type="number" name="qtd_{{this.id_prod}}" id="qtd_{{this.id_prod}}" value="0" min="0" style="width: 60px;">
+            </div>
+        {{/each}}
+    </div>
+    <hr>
+     <div>
+        <label for="forma_pagamento">Forma de Pagamento:</label>
+        <input type="text" id="forma_pagamento" name="forma_pagamento" value="Dinheiro">
+    </div>
+    <br>
+    <button type="submit">Finalizar Venda</button>
+    <a href="/vendas">Cancelar</a>
+</form>

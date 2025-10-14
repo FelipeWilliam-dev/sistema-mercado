@@ -1,0 +1,33 @@
+<h2>{{title}}</h2>
+<a href="/vendas/nova" class="button">Registrar Nova Venda</a>
+
+<table border="1" style="width:100%; margin-top: 20px;">
+    <thead>
+        <tr>
+            <th>ID Venda</th>
+            <th>Cliente</th>
+            <th>Vendedor</th>
+            <th>Valor Total</th>
+            <th>Data</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each vendas}}
+        <tr>
+            <td>{{this.id_venda}}</td>
+            <td>{{this.Cliente.nome_cliente}}</td>
+            <td>{{this.Usuario.nome_usuario}}</td>
+            <td>R$ {{this.valor_total}}</td>
+            <td>{{this.data_venda}}</td>
+            <td>
+                <a href="/vendas/detalhes/{{this.id_venda}}">Ver Detalhes</a>
+            </td>
+        </tr>
+        {{else}}
+        <tr>
+            <td colspan="6">Nenhuma venda registrada.</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

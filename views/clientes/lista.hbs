@@ -1,0 +1,36 @@
+<h2>{{title}}</h2>
+<a href="/clientes/novo" class="button">Adicionar Novo Cliente</a>
+
+<table border="1" style="width:100%; margin-top: 20px;">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each clientes}}
+        <tr>
+            <td>{{this.id_cliente}}</td>
+            <td>{{this.nome_cliente}}</td>
+            <td>{{this.cpf}}</td>
+            <td>{{this.email_cliente}}</td>
+            <td>{{this.telefone_cliente}}</td>
+            <td>
+                <a href="/clientes/editar/{{this.id_cliente}}">Editar</a>
+                <form action="/clientes/excluir/{{this.id_cliente}}" method="POST" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Tem certeza?');">Excluir</button>
+                </form>
+            </td>
+        </tr>
+        {{else}}
+        <tr>
+            <td colspan="6">Nenhum cliente cadastrado.</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

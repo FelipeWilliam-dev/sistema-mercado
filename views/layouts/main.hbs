@@ -11,13 +11,15 @@
 <body>
     <header>
         <h1>Sistema de Gestão - Taberna</h1>
+        {{#if user}} <p>Olá, {{user.nome}}! | <a href="/logout">Sair</a></p>
+        {{/if}}
         <nav>
             <a href="/">Início</a> |
             <a href="/fornecedores">Fornecedores</a> |
             <a href="/clientes">Clientes</a> |
             <a href="/produtos">Produtos</a> |
-            <a href="/vendas">Vendas</a>    |
-            <a href="/usuarios">Usuários</a> 
+            <a href="/vendas">Vendas</a> |
+            <a href="/usuarios">Usuários</a>
         </nav>
     </header>
 

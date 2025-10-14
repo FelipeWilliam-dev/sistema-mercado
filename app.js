@@ -28,10 +28,13 @@ app.get('/', (req, res) => {
     res.render('home', { title: 'Página Inicial do Mercado' });
 });
 
+// rotas
 const fornecedorRoutes = require('./routes/fornecedorRoutes');
+const clienteRoutes = require('./routes/clienteRoutes');
 
 
-app.use('/fornecedores', fornecedorRoutes); 
+app.use('/fornecedores', fornecedorRoutes);
+app.use('/clientes', clienteRoutes); 
 
 
 

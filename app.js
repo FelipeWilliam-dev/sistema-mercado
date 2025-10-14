@@ -22,6 +22,19 @@ app.get('/', (req, res) => {
     res.render('home', { title: 'Página Inicial do Mercado' });
 });
 
+
+
+app.get('/', (req, res) => {
+    res.render('home', { title: 'Página Inicial do Mercado' });
+});
+
+const fornecedorRoutes = require('./routes/fornecedorRoutes');
+
+
+app.use('/fornecedores', fornecedorRoutes); 
+
+
+
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}. Acesse http://localhost:${PORT}`);
 });

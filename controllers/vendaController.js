@@ -80,7 +80,7 @@ exports.registrarVenda = async (req, res) => {
         
         const novaVenda = await Venda.create({
             id_cliente,
-            id_usuario: 1, 
+            id_usuario: req.session.user.id, 
             valor_total,
             forma_pagamento
         }, { transaction: t });

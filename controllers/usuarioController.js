@@ -10,14 +10,29 @@ exports.listarUsuarios = async (req, res) => {
     }
 };
 
-exports.mostrarFormularioNovo = (req, res) => {
-    res.render('usuarios/form', { title: 'Novo Usuário' });
+exports.mostrarFormularioNovo = async (req, res) => {
+    try {
+        const userCount = await Usuario.count();
+        
+        res.render('usuarios/form', { 
+            title: 'Novo Usuário', 
+            isFirstUser: userCount === 0 
+        });
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
 };
 
 exports.criarUsuario = async (req, res) => {
     try {
+        const { nome_usuario, login, senha } = req.body;
+        let { tipo_acesso } = req.body;
+
+        const userCount = await Usuario.count();
         
-        const { nome_usuario, login, senha, tipo_acesso } = req.body;
+        if (userCount === 0) {
+            tipo_acesso = 'admin';
+        }
 
         const salt = await bcrypt.genSalt(10);
         const senhaHash = await bcrypt.hash(senha, salt);
@@ -25,9 +40,14 @@ exports.criarUsuario = async (req, res) => {
         await Usuario.create({
             nome_usuario,
             login,
-            senha: senhaHash, 
+            senha: senhaHash,
             tipo_acesso
         });
+
+        if (userCount === 0) {
+            return res.redirect('/login');
+        }
+
         res.redirect('/usuarios');
     } catch (error) {
         res.status(500).send(error.message);

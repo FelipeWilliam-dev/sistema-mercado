@@ -1,5 +1,11 @@
 <h2>{{title}}</h2>
 
+{{#if isFirstUser}}
+    <p style="background-color: #eef; padding: 10px; border: 1px solid #ccd;">
+        <b>Setup Inicial:</b> O primeiro usuário será registrado automaticamente como <b>Administrador</b>.
+    </p>
+{{/if}}
+
 <form action="/usuarios/novo" method="POST">
     <div>
         <label for="nome_usuario">Nome Completo:</label>
@@ -16,7 +22,8 @@
         <input type="password" id="senha" name="senha" required>
     </div>
     <br>
-    <div>
+
+    {{#unless isFirstUser}} <div>
         <label for="tipo_acesso">Tipo de Acesso:</label>
         <select name="tipo_acesso" id="tipo_acesso" required>
             <option value="vendedor">Vendedor</option>
@@ -24,6 +31,8 @@
         </select>
     </div>
     <br>
+    {{/unless}}
+
     <button type="submit">Salvar</button>
     <a href="/usuarios">Cancelar</a>
 </form>

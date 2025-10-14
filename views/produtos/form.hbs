@@ -1,0 +1,39 @@
+<h2>{{title}}</h2>
+
+{{#if produto}}
+    <form action="/produtos/editar/{{produto.id_prod}}" method="POST">
+{{else}}
+    <form action="/produtos/novo" method="POST">
+{{/if}}
+
+    <div>
+        <label for="nome_prod">Nome do Produto:</label>
+        <input type="text" id="nome_prod" name="nome_prod" value="{{produto.nome_prod}}" required>
+    </div>
+    <br>
+    <div>
+        <label for="preco_prod">Preço (ex: 10.99):</label>
+        <input type="number" step="0.01" id="preco_prod" name="preco_prod" value="{{produto.preco_prod}}" required>
+    </div>
+    <br>
+    <div>
+        <label for="qtd_estoque">Quantidade em Estoque:</label>
+        <input type="number" id="qtd_estoque" name="qtd_estoque" value="{{produto.qtd_estoque}}" required>
+    </div>
+    <br>
+    <div>
+        <label for="id_fornecedor">Fornecedor:</label>
+        <select id="id_fornecedor" name="id_fornecedor" required>
+            <option value="">-- Selecione um Fornecedor --</option>
+            {{#each fornecedores}}
+                <option value="{{this.id_fornecedor}}" 
+                    {{#if (eq this.id_fornecedor ../produto.id_fornecedor)}}selected{{/if}}>
+                    {{this.nome_fornecedor}}
+                </option>
+            {{/each}}
+        </select>
+    </div>
+    <br>
+    <button type="submit">Salvar</button>
+    <a href="/produtos">Cancelar</a>
+</form>

@@ -1,0 +1,35 @@
+<h2>{{title}}</h2>
+<a href="/produtos/novo" class="button">Adicionar Novo Produto</a>
+
+<table border="1" style="width:100%; margin-top: 20px;">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Estoque</th>
+            <th>Fornecedor</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each produtos}}
+        <tr>
+            <td>{{this.id_prod}}</td>
+            <td>{{this.nome_prod}}</td>
+            <td>R$ {{this.preco_prod}}</td>
+            <td>{{this.qtd_estoque}} {{this.unidade_medida}}</td>
+            <td>{{this.Fornecedor.nome_fornecedor}}</td> <td>
+                <a href="/produtos/editar/{{this.id_prod}}">Editar</a>
+                <form action="/produtos/excluir/{{this.id_prod}}" method="POST" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Tem certeza?');">Excluir</button>
+                </form>
+            </td>
+        </tr>
+        {{else}}
+        <tr>
+            <td colspan="6">Nenhum produto cadastrado.</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

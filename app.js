@@ -7,8 +7,13 @@ const app = express();
 const PORT = 3000;
 
 app.engine('hbs', engine({
-    extname: '.hbs', 
-    defaultLayout: 'main' 
+    extname: '.hbs',
+    defaultLayout: 'main',
+    helpers: { 
+        eq: function (a, b) {
+            return a === b;
+        }
+    }
 }));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
@@ -31,10 +36,12 @@ app.get('/', (req, res) => {
 // rotas
 const fornecedorRoutes = require('./routes/fornecedorRoutes');
 const clienteRoutes = require('./routes/clienteRoutes');
+const produtoRoutes = require('./routes/produtoRoutes');
 
 
 app.use('/fornecedores', fornecedorRoutes);
-app.use('/clientes', clienteRoutes); 
+app.use('/clientes', clienteRoutes);
+app.use('/produtos', produtoRoutes);
 
 
 

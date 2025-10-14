@@ -2,7 +2,7 @@ const Fornecedor = require('../models/Fornecedor');
 
 exports.listarFornecedores = async (req, res) => {
     try {
-        const fornecedores = await Fornecedor.findAll();
+        const fornecedores = await Fornecedor.findAll({ raw: true });
         res.render('fornecedores/lista', { fornecedores: fornecedores, title: 'Lista de Fornecedores' });
     } catch (error) {
         console.error(error);

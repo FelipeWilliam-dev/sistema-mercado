@@ -1,0 +1,36 @@
+<h2>{{title}}</h2>
+
+{{#if fornecedor}}
+    <form action="/fornecedores/editar/{{fornecedor.id_fornecedor}}" method="POST">
+{{else}}
+    <form action="/fornecedores/novo" method="POST">
+{{/if}}
+
+    <div>
+        <label for="nome_fornecedor">Nome do Fornecedor:</label>
+        <input type="text" id="nome_fornecedor" name="nome_fornecedor" value="{{fornecedor.nome_fornecedor}}" required>
+    </div>
+    <br>
+    <div>
+        <label for="cnpj">CNPJ:</label>
+        <input type="text" id="cnpj" name="cnpj" value="{{fornecedor.cnpj}}">
+    </div>
+    <br>
+    <div>
+        <label for="email_fornecedor">Email:</label>
+        <input type="email" id="email_fornecedor" name="email_fornecedor" value="{{fornecedor.email_fornecedor}}">
+    </div>
+    <br>
+    <div>
+        <label for="telefone_fornecedor">Telefone:</label>
+        <input type="text" id="telefone_fornecedor" name="telefone_fornecedor" value="{{fornecedor.telefone_fornecedor}}">
+    </div>
+    <br>
+    <div>
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" name="endereco" value="{{fornecedor.endereco}}">
+    </div>
+    <br>
+    <button type="submit">Salvar</button>
+    <a href="/fornecedores">Cancelar</a>
+</form>

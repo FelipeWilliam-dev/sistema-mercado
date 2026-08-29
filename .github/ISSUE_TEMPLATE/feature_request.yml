@@ -1,0 +1,42 @@
+name: "✨ Nova funcionalidade / Feature Request"
+description: "Sugestão de nova funcionalidade ou melhoria no JobFinder"
+title: "[Feature]: "
+labels: ["enhancement"]
+assignees: []
+
+body:
+  - type: textarea
+    id: descricao
+    attributes:
+      label: "📝 Descrição da Feature"
+      description: Explique de forma clara e objetiva qual é a funcionalidade desejada.
+      placeholder: "Ex: Permitir que empresas salvem uma vaga como rascunho antes de publicar."
+    validations:
+      required: true
+
+  - type: textarea
+    id: problema
+    attributes:
+      label: "❓ Problema relacionado"
+      description: Existe algum problema atual que essa feature resolve?
+      placeholder: "Ex: Hoje a empresa precisa preencher e publicar a vaga de uma vez, sem poder revisar depois."
+    validations:
+      required: false
+
+  - type: textarea
+    id: criterios
+    attributes:
+      label: "🎯 Critérios de aceite"
+      description: Liste o que deve estar funcionando para considerar a feature concluída.
+      placeholder: "- [ ] A empresa consegue salvar uma vaga como rascunho\n- [ ] A vaga em rascunho não aparece para candidatos\n- [ ] A empresa consegue publicar o rascunho depois"
+    validations:
+      required: true
+
+  - type: textarea
+    id: contexto
+    attributes:
+      label: "📎 Contexto adicional"
+      description: Inclua prints, diagramas ou links que ajudem na implementação.
+      placeholder: "Links, prints, diagramas..."
+    validations:
+      required: false
